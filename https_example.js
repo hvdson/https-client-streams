@@ -11,7 +11,12 @@ var options = {
 // response is w.e is passed into callback fntn when it is called
 var callback = function(response) {
   console.log("In response handler callback!");
-  console.log("Response: ", response);
+
+  response.on("data", function(chunk) {
+    console.log("[-- CHUNk OF LENGTH " + chunk.length + " --]");
+    console.log(chunk.toString());
+  });
+
 }
 
 console.log("I'm about to make the request!");
